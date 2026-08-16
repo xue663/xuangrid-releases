@@ -5,7 +5,7 @@
 - `grid-v7-<version>-win-x64.zip`：Windows x64 安装包
 - 对应的 `.sha256` 校验文件
 
-Linux 用户统一使用 Docker 镜像，镜像同步发布到 `ghcr.io/xue663/grid-v7`。
+Linux 用户统一使用 Docker 镜像，镜像同步发布到 `ghcr.io/xue663/xuangrid`。
 
 `latest.json` 记录当前最新版本信息，供官网下载页使用：
 
