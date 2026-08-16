@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-7.1.1-00b4d8" alt="version" />
+  <img src="https://img.shields.io/badge/version-7.1.2-00b4d8" alt="version" />
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-6366f1" alt="platform" />
   <img src="https://img.shields.io/badge/exchange-Binance%20USD--M-f59e0b" alt="exchange" />
   <img src="https://img.shields.io/badge/license-proprietary-ef4444" alt="license" />
@@ -30,14 +30,14 @@ docker run -d --name xuangrid --restart unless-stopped \
   -p 8787:8787 \
   -v ~/xuangrid/config:/app/config \
   -v ~/xuangrid/data:/app/data \
-  ghcr.io/xue663/xuangrid:7.1.1
+  ghcr.io/xue663/xuangrid:7.1.2
 ```
 
 首次启动会自动生成 `config.yaml`（默认测试网），随后在浏览器完成初始化并配置币安 API。`data/` 保存数据库、凭证与许可证，升级时替换镜像并保留目录即可。
 
 ### Windows
 
-1. 下载 `grid-v7-7.1.1-win-x64.zip`。
+1. 下载 `grid-v7-7.1.2-win-x64.zip`。
 2. 解压后运行 `run.bat`。
 3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化。
 
