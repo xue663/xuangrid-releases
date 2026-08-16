@@ -30,7 +30,7 @@ docker run -d --name xuangrid --restart unless-stopped \
   -p 8787:8787 \
   -v ~/xuangrid/config:/app/config \
   -v ~/xuangrid/data:/app/data \
-  ghcr.io/xue663/xuangrid:7.1.2
+  ghcr.io/xue663/xuangrid:latest
 ```
 
 首次启动会自动生成 `config.yaml`（默认测试网），随后在浏览器完成初始化并配置币安 API。`data/` 保存数据库、凭证与许可证，升级时替换镜像并保留目录即可。
