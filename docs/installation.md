@@ -8,15 +8,15 @@
 ## Docker 部署
 
 ```bash
-mkdir -p grid-v7/{config,data,logs}
-cd grid-v7
-docker pull ghcr.io/xue663/grid-v7:latest
-docker run -d --name grid-v7 -p 8787:8787 \
+mkdir -p xuangrid/{config,data,logs}
+cd xuangrid
+docker pull ghcr.io/xue663/xuangrid:latest
+docker run -d --name xuangrid -p 8787:8787 \
   -v ./config:/app/config \
   -v ./data:/app/data \
   -v ./logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  ghcr.io/xue663/grid-v7:latest
+  ghcr.io/xue663/xuangrid:latest
 ```
 
 首次启动后浏览器打开 `http://<服务器IP>:8787` 完成管理员初始化，并配置币安 API。
@@ -26,15 +26,15 @@ docker run -d --name grid-v7 -p 8787:8787 \
 Linux 用户统一使用 Docker 镜像部署，公开仓库不提供 Linux 源码运行包：
 
 ```bash
-mkdir -p grid-v7/{config,data,logs}
-cd grid-v7
-docker pull ghcr.io/xue663/grid-v7:latest
-docker run -d --name grid-v7 -p 8787:8787 \
+mkdir -p xuangrid/{config,data,logs}
+cd xuangrid
+docker pull ghcr.io/xue663/xuangrid:latest
+docker run -d --name xuangrid -p 8787:8787 \
   -v ./config:/app/config \
   -v ./data:/app/data \
   -v ./logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  ghcr.io/xue663/grid-v7:latest
+  ghcr.io/xue663/xuangrid:latest
 ```
 
 需要 systemd 托管时，参考私有仓库 `deploy/` 目录中的服务模板。
@@ -61,7 +61,7 @@ docker run -d --name grid-v7 -p 8787:8787 \
 
 ### 网页打不开
 
-确认防火墙放行 8787 端口；Docker 部署检查 `docker logs grid-v7`。
+确认防火墙放行 8787 端口；Docker 部署检查 `docker logs xuangrid`。
 
 ### 许可证提示未激活或已过期
 
