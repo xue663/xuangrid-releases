@@ -21,6 +21,16 @@ docker run -d --name xuangrid -p 8787:8787 \
 
 首次启动后浏览器打开 `http://<服务器IP>:8787` 完成管理员初始化，并配置币安 API。
 
+### 公开只读演示（仅测试网）
+
+官网演示容器可在确认 `config.yaml` 使用 `environment: testnet` 后增加：
+
+```bash
+-e XUANGRID_PUBLIC_DEMO=true
+```
+
+访客将自动以观察员身份进入，只能读取行情、网格、订单、收益和风险数据。暂停、恢复、参数、用户、交易所凭证、激活与通知配置等写操作均由后端拒绝。主网实例启用该选项会直接拒绝启动。
+
 ## Linux 部署（Docker）
 
 Linux 用户统一使用 Docker 镜像部署，公开仓库不提供 Linux 源码运行包：
