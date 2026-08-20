@@ -73,6 +73,17 @@ docker run -d --name xuangrid -p 8787:8787 \
 
 确认防火墙放行 8787 端口；Docker 部署检查 `docker logs xuangrid`。
 
+### 容器启动报 Permission denied / 无法创建 config.yaml
+
+Docker 镜像以 UID 10001 的非 root 用户运行。使用 `-v ./config:/app/config` 这类目录挂载时，如果宿主目录由 root 创建，容器内用户可能没有写入权限。可执行：
+
+```bash
+sudo chown -R 10001:10001 xuangrid/config xuangrid/data xuangrid/logs
+docker restart xuangrid
+```
+
+新版镜像的启动脚本会自动修正 `/app/config`、`/app/data`、`/app/logs` 的归属，再切换到非 root 用户运行程序。
+
 ### 许可证提示未激活或已过期
 
 在官网购买后输入激活码；换设备请先在客户门户解绑旧设备。
