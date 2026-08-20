@@ -71,6 +71,7 @@ docker run -d --name xuangrid --restart unless-stopped \
 ## 文档
 
 - [安装与部署](docs/installation.md)
+- [各应用安装与使用指南](docs/usage.md)
 - [激活与设备迁移](docs/activation.md)
 - [发布产物说明](releases/README.md)
 
