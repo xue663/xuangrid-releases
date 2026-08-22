@@ -1,10 +1,10 @@
 {
-  "version": "7.1.10",
-  "tag": "v7.1.10",
-  "published_at": "2026-08-21T16:00:00Z",
+  "version": "7.1.11",
+  "tag": "v7.1.11",
+  "published_at": "2026-08-22T05:36:53Z",
   "assets": {
-    "windows": "grid-v7-7.1.10-win-x64.zip",
-    "sha256": "grid-v7-7.1.10-win-x64.zip.sha256"
+    "windows": "grid-v7-7.1.11-win-x64.zip",
+    "sha256": "grid-v7-7.1.11-win-x64.zip.sha256"
   },
-  "docker": "ghcr.io/xue663/xuangrid:7.1.10"
+  "docker": "ghcr.io/xue663/xuangrid:7.1.11"
 }
