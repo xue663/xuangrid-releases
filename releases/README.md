@@ -11,11 +11,11 @@ Linux 用户统一使用 Docker 镜像，镜像同步发布到 `ghcr.io/xue663/x
 
 ```json
 {
-  "version": "7.1.11",
-  "published_at": "2026-08-22T05:36:53Z",
+  "version": "7.2.0",
+  "published_at": "2026-08-22T12:00:15Z",
   "assets": {
-    "windows": "grid-v7-7.1.11-win-x64.zip",
-    "sha256": "grid-v7-7.1.11-win-x64.zip.sha256"
+    "windows": "grid-v7-7.2.0-win-x64.zip",
+    "sha256": "grid-v7-7.2.0-win-x64.zip.sha256"
   }
 }
 ```
