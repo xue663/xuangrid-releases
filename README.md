@@ -37,7 +37,7 @@ docker run -d --name xuangrid --restart unless-stopped \
 
 ### Windows
 
-1. 下载 `grid-v7-1.0.0-win-x64.zip`。
+1. 下载 `xuangrid-1.0.0-win-x64.zip`。
 2. 解压后运行 `run.bat`。
 3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化。
 

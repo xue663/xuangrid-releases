@@ -2,7 +2,7 @@
 
 每个正式版本在 GitHub Releases 发布以下产物：
 
-- `grid-v7-<version>-win-x64.zip`：Windows x64 安装包
+- `xuangrid-<version>-win-x64.zip`：Windows x64 安装包
 - 对应的 `.sha256` 校验文件
 
 Linux 用户统一使用 Docker 镜像，镜像同步发布到 `jun663/xuangrid` 与 `ghcr.io/xue663/xuangrid`。
@@ -14,8 +14,8 @@ Linux 用户统一使用 Docker 镜像，镜像同步发布到 `jun663/xuangrid`
   "version": "1.0.0",
   "published_at": "2026-08-29T14:04:51Z",
   "assets": {
-    "windows": "grid-v7-1.0.0-win-x64.zip",
-    "sha256": "grid-v7-1.0.0-win-x64.zip.sha256"
+    "windows": "xuangrid-1.0.0-win-x64.zip",
+    "sha256": "xuangrid-1.0.0-win-x64.zip.sha256"
   }
 }
 ```

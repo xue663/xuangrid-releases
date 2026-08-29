@@ -52,7 +52,7 @@ docker run -d --name xuangrid -p 8787:8787 \
 
 ## Windows 部署
 
-1. 解压 `grid-v7-<version>-win-x64.zip`
+1. 解压 `xuangrid-<version>-win-x64.zip`
 2. 双击 `run.bat`（不要直接双击 exe），首次会自动生成 `config.yaml` 和 API Token
    - Web 初始化页面会自动显示并填入「一次性初始化码」
 3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化

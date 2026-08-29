@@ -6,7 +6,7 @@
 
 ### 安装
 
-1. 从 [GitHub Releases](https://github.com/xue663/xuangrid-releases/releases/latest) 下载 `grid-v7-<version>-win-x64.zip` 与同名 `.sha256`。
+1. 从 [GitHub Releases](https://github.com/xue663/xuangrid-releases/releases/latest) 下载 `xuangrid-<version>-win-x64.zip` 与同名 `.sha256`。
 2. 在 PowerShell 中核对压缩包哈希与 `.sha256` 文件一致。
 3. 解压到不含中文和空格的目录，例如 `D:\xuangrid`。
 4. 进入解压后的最内层目录，双击 `run.bat`。不要直接运行 `grid-v7.exe`。
