@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "tag": "v1.0.0",
-  "published_at": "2026-08-29T14:04:51Z",
+  "published_at": "2026-08-29T14:30:16Z",
   "assets": {
     "windows": "grid-v7-1.0.0-win-x64.zip",
     "sha256": "grid-v7-1.0.0-win-x64.zip.sha256"
