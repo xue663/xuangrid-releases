@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "tag": "v1.0.0",
+  "published_at": "2026-08-29T14:04:51Z",
+  "assets": {
+    "windows": "grid-v7-1.0.0-win-x64.zip",
+    "sha256": "grid-v7-1.0.0-win-x64.zip.sha256"
+  },
+  "docker": "jun663/xuangrid:1.0.0",
+  "docker_mirrors": [
+    "ghcr.io/xue663/xuangrid:1.0.0"
+  ]
+}
