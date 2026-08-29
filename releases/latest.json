@@ -6,8 +6,5 @@
     "windows": "xuangrid-1.0.0-win-x64.zip",
     "sha256": "xuangrid-1.0.0-win-x64.zip.sha256"
   },
-  "docker": "jun663/xuangrid:1.0.0",
-  "docker_mirrors": [
-    "ghcr.io/xue663/xuangrid:1.0.0"
-  ]
+  "docker": "jun663/xuangrid:1.0.0"
 }
