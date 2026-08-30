@@ -11,11 +11,11 @@ Linux 用户统一使用 Docker Hub 镜像 `jun663/xuangrid`。
 
 ```json
 {
-  "version": "1.0.0",
-  "published_at": "2026-08-29T14:04:51Z",
+  "version": "1.0.1",
+  "published_at": "2026-08-30T10:15:43Z",
   "assets": {
-    "windows": "xuangrid-1.0.0-win-x64.zip",
-    "sha256": "xuangrid-1.0.0-win-x64.zip.sha256"
+    "windows": "xuangrid-1.0.1-win-x64.zip",
+    "sha256": "xuangrid-1.0.1-win-x64.zip.sha256"
   }
 }
 ```

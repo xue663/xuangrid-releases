@@ -10,13 +10,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-00b4d8" alt="version" />
+  <img src="https://img.shields.io/badge/version-1.0.1-00b4d8" alt="version" />
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-6366f1" alt="platform" />
   <img src="https://img.shields.io/badge/exchange-Binance%20USD--M-f59e0b" alt="exchange" />
   <img src="https://img.shields.io/badge/license-proprietary-ef4444" alt="license" />
 </p>
 
-本仓库是 XuanGrid 的发布通道，提供 Windows 安装包、Linux 运行包、Docker 镜像与使用文档。软件为专有授权产品：下载免费，完整功能需要使用激活码激活。
+本仓库是 XuanGrid 的发布通道，提供 Windows 安装包、Docker 镜像与使用文档。
 
 ---
 
@@ -30,14 +30,14 @@ docker run -d --name xuangrid --restart unless-stopped \
   -p 8787:8787 \
   -v ~/xuangrid/config:/app/config \
   -v ~/xuangrid/data:/app/data \
-  jun663/xuangrid:1.0.0
+  jun663/xuangrid:1.0.1
 ```
 
 首次启动会自动生成 `config.yaml`（默认测试网），随后在浏览器完成初始化并配置币安 API。`data/` 保存数据库、凭证与许可证，升级时替换镜像并保留目录即可。
 
 ### Windows
 
-1. 下载 `xuangrid-1.0.0-win-x64.zip`。
+1. 下载 `xuangrid-1.0.1-win-x64.zip`。
 2. 解压后运行 `run.bat`。
 3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化。
 

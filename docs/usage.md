@@ -66,7 +66,7 @@ docker run -d --name xuangrid --restart unless-stopped \
   -v ~/xuangrid/data:/app/data \
   -v ~/xuangrid/logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  jun663/xuangrid:1.0.0
+  jun663/xuangrid:1.0.1
 ```
 
 5. 执行 `docker ps` 与 `docker logs -f xuangrid`，确认容器运行、配置生成且无 Permission denied。
@@ -94,7 +94,7 @@ docker run -d --name xuangrid --restart unless-stopped \
 3. 拉取新镜像：
 
 ```bash
-docker pull jun663/xuangrid:1.0.0
+docker pull jun663/xuangrid:1.0.1
 ```
 
 4. 删除旧容器，并用原来的端口、环境变量和挂载路径重建容器。
