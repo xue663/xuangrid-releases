@@ -1,10 +1,10 @@
 {
-  "version": "1.0.2",
-  "tag": "v1.0.2",
-  "published_at": "2026-08-31T14:17:16Z",
+  "version": "1.0.3",
+  "tag": "v1.0.3",
+  "published_at": "2026-09-01T15:34:50Z",
   "assets": {
-    "windows": "xuangrid-1.0.2-win-x64.zip",
-    "sha256": "xuangrid-1.0.2-win-x64.zip.sha256"
+    "windows": "xuangrid-1.0.3-win-x64.zip",
+    "sha256": "xuangrid-1.0.3-win-x64.zip.sha256"
   },
-  "docker": "jun663/xuangrid:1.0.2"
+  "docker": "jun663/xuangrid:1.0.3"
 }
