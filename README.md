@@ -77,14 +77,3 @@ docker run -d --name xuangrid --restart unless-stopped \
 
 ---
 
-## 授权说明
-
-XuanGrid 是专有软件，保留所有权利。未经授权不得分发、反编译或用于商业用途。每个激活码默认绑定 1 台设备，换设备前必须在客户门户解绑。
-
----
-
-<p align="center">
-  <a href="https://www.1990663.xyz/">官网</a> ·
-  <a href="https://www.1990663.xyz/buy/">购买订阅</a> ·
-  <a href="https://www.1990663.xyz/portal/">客户门户</a>
-</p>
