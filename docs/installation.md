@@ -10,13 +10,13 @@
 ```bash
 mkdir -p xuangrid/{config,data,logs}
 cd xuangrid
-docker pull jun663/xuangrid:1.0.5
+docker pull jun663/xuangrid:1.0.6
 docker run -d --name xuangrid -p 8787:8787 \
   -v ./config:/app/config \
   -v ./data:/app/data \
   -v ./logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  jun663/xuangrid:1.0.5
+  jun663/xuangrid:1.0.6
 ```
 
 首次启动后浏览器打开 `http://<服务器IP>:8787` 完成管理员初始化，并配置币安 API。
@@ -39,13 +39,13 @@ Linux 用户统一使用 Docker 镜像部署，公开仓库不提供 Linux 源�
 ```bash
 mkdir -p xuangrid/{config,data,logs}
 cd xuangrid
-docker pull jun663/xuangrid:1.0.5
+docker pull jun663/xuangrid:1.0.6
 docker run -d --name xuangrid -p 8787:8787 \
   -v ./config:/app/config \
   -v ./data:/app/data \
   -v ./logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  jun663/xuangrid:1.0.5
+  jun663/xuangrid:1.0.6
 ```
 
 需要 systemd 托管时，参考私有仓库 `deploy/` 目录中的服务模板。
