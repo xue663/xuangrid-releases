@@ -24,7 +24,7 @@
 ### 日常使用
 
 1. 总览页检查行情延迟、仓位、保证金、强平距离、容量和最新事件。
-2. 策略中心先看「策略方案工作台」：系统会基于本实例历史成交、调整成本、资金费和间距样本列出中性、做多、做空三套方案。
+2. 策略中心先看「策略方案工作台」：系统会基于本实例历史成交、调整成本和资金费列出中性、做多、做空三套方案。
 3. 比较杠杆、库存、开仓挂单、间距、压力损失和证据说明；卡片上的「进入前需要处理」会说明方向切换、持仓、资金或数量精度约束，以及对应恢复路径。
 4. 当前方向方案可直接载入只读预演；应用前仍需通过实时风险校验、管理员审批和交易对二次确认。
 5. 风控中心先看「当前最先需要关注」和「现在会发生什么 · 可以做什么」，再使用未来预测、保证金工具、风险顾问和完整指标表。
@@ -66,7 +66,7 @@ docker run -d --name xuangrid --restart unless-stopped \
   -v ~/xuangrid/data:/app/data \
   -v ~/xuangrid/logs:/app/logs \
   -e TZ=Asia/Shanghai \
-  jun663/xuangrid:1.0.6
+  jun663/xuangrid:1.0.7
 ```
 
 5. 执行 `docker ps` 与 `docker logs -f xuangrid`，确认容器运行、配置生成且无 Permission denied。
@@ -94,7 +94,7 @@ docker run -d --name xuangrid --restart unless-stopped \
 3. 拉取新镜像：
 
 ```bash
-docker pull jun663/xuangrid:1.0.6
+docker pull jun663/xuangrid:1.0.7
 ```
 
 4. 删除旧容器，并用原来的端口、环境变量和挂载路径重建容器。
