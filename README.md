@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.1.4-00b4d8" alt="version" />
+  <img src="https://img.shields.io/badge/version-1.1.5-00b4d8" alt="version" />
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-6366f1" alt="platform" />
   <img src="https://img.shields.io/badge/exchange-Binance%20USD--M-f59e0b" alt="exchange" />
   <img src="https://img.shields.io/badge/license-proprietary-ef4444" alt="license" />
@@ -37,7 +37,7 @@ docker run -d --name xuangrid --restart unless-stopped \
 
 ### Windows
 
-1. 下载 `xuangrid-1.1.4-win-x64.zip`。
+1. 下载 `xuangrid-1.1.5-win-x64.zip`。
 2. 解压后运行 `run.bat`。
 3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化。
 
