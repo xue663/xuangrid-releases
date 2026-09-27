@@ -61,6 +61,8 @@ docker run -d --name xuangrid -p 8787:8787 \
 
 首次配置 Binance 凭证时，可在 Web 页面选择「测试网 testnet」或「主网 mainnet」；主网会显示真实资金风险确认提示。
 
+首次设置可一次提交运行环境与对应的 Binance API 凭证。选择主网后，系统先验证主网凭证，再读取合约钱包余额作为初始本金；余额为零时无法完成设置。请确认 API Key 未开启提现权限，并确保目标账户满足空仓、无挂单的首次启动要求。
+
 开机自启：下载 [NSSM](https://nssm.cc) 放入 PATH，以管理员身份运行 `install_service.bat`。
 
 ## 升级
