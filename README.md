@@ -1,80 +1,44 @@
-<p align="center">
-  <img src="docs/brand/logo.svg" width="88" alt="XuanGrid" />
-</p>
+<p align="center"><img src="docs/brand/logo.svg" width="88" alt="XuanGrid" /></p>
 
-<h1 align="center">XuanGrid</h1>
+# XuanGrid
 
-<p align="center">
-  面向 Binance USD-M Futures 的智能网格交易系统<br/>
-  ATR 自适应间距 · 中性 / 做多 / 做空网格 · 分层风控 · 订阅授权
-</p>
+面向 Binance U 本位永续合约的网格交易工具，支持中性、做多、做空网格，ATR 自适应间距、分层风控、收益分析与多通道通知。Windows 或 Docker 自行部署，先在测试网验证，再决定是否使用实盘。
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-1.4.5-00b4d8" alt="version" />
-  <img src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-6366f1" alt="platform" />
-  <img src="https://img.shields.io/badge/exchange-Binance%20USD--M-f59e0b" alt="exchange" />
-  <img src="https://img.shields.io/badge/license-proprietary-ef4444" alt="license" />
-</p>
+本仓库提供安装包与客户文档。当前稳定版 **1.4.5**。
 
-本仓库是 XuanGrid 的发布通道，提供 Windows 安装包、Docker 镜像与使用文档。
+## 选择安装方式
 
----
+- **Windows x64**：[下载 1.4.5 ZIP 和校验文件](https://github.com/xue663/xuangrid-releases/releases/tag/v1.4.5)，解压后双击最内层目录的 `run.bat`，访问 `http://127.0.0.1:8787`。
+- **Linux / 飞牛 / NAS**：使用 [Docker Hub](https://hub.docker.com/r/jun663/xuangrid) 的 `jun663/xuangrid:1.4.5`，支持 Linux amd64 / x86_64。
+- **先看界面**：[打开只读测试网演示](https://demo.1990663.xyz/)。演示不提供控制操作，展示数据不代表未来收益。
 
-## 快速开始
+[完整安装命令、下载校验及升级步骤 →](docs/installation.md)
 
-### Docker
+## 首次使用
 
-```bash
-mkdir -p ~/xuangrid/config ~/xuangrid/data
-docker run -d --name xuangrid --restart unless-stopped \
-  -p 8787:8787 \
-  -v ~/xuangrid/config:/app/config \
-  -v ~/xuangrid/data:/app/data \
-  jun663/xuangrid:latest
-```
+按网页六步引导完成：**创建管理员 → 激活或试用 → 连接账户 → 配置策略 → 资金与风险预演 → 确认启动**。
 
-首次启动会自动生成 `config.yaml`（默认测试网），随后在浏览器完成初始化并配置币安 API。`data/` 保存数据库、凭证与许可证，升级时替换镜像并保留目录即可。
+一次性初始化码用于创建管理员，激活码用于订阅授权，管理员密码用于登录和确认操作。完成安装或激活不会自动开始交易。
 
-### Windows
+## 1.4.5 改善了什么
 
-1. 下载 `xuangrid-1.4.5-win-x64.zip`。
-2. 解压后运行 `run.bat`。
-3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化。
+- 保证金结果暂时不明确时在后台核查，符合条件的临时保护可以自动恢复，保留用户手动暂停。
+- 疑难旧记录由系统检查当前账户，管理员按提示确认，审计依据自动保存。
+- 运行通知使用简短中文，说明影响和下一步，减少无操作价值的观察消息。
 
-启动失败时窗口会暂停并显示错误码，详细日志在 `logs\startup.log`。
+[暂停、保证金核查及运行提醒 →](docs/operations.md) · [完整更新说明 →](releases/release-notes-1.4.5.md)
 
----
+## 功能与操作边界
 
-## 购买与激活
+支持策略预演、中性与方向网格、风险状态与保护、收益账本、飞书 / 钉钉 / Telegram 通知，以及有行情依据的 AI 助手。方案和预演供核对参考，应用参数、首次启动及受控操作仍须通过实时检查和相应确认。交易存在损失风险，工具不承诺收益。
 
-1. 前往 [购买页面](https://www.1990663.xyz/buy/) 选择套餐并支付。
-2. USDT TRC20 到账后自动发放激活码。
-3. 在 XuanGrid Web 的「订阅与授权」输入激活码完成激活。
+## 订阅与帮助
 
-同邮箱续费会自动叠加时长；换设备请先在 [客户门户](https://www.1990663.xyz/portal/) 解绑旧设备。
+新购请到 [官网购买页](https://www.1990663.xyz/buy/)；付款确认后查询原订单获取激活码。已有授权请在 [客户门户](https://www.1990663.xyz/portal/) 点击 **续费此授权**，普通新购会单独发码。常规升级保留原配置与完整数据，无需解绑；换设备按迁移指南操作。
 
----
-
-## 功能特性
-
-| 能力 | 说明 |
-| --- | --- |
-| ATR 自适应网格 | 根据波动自动调整间距 |
-| 方向网格 | 中性 / 做多 / 做空三种模式 |
-| 分层风控 | 强平距离、容量、压力损失预警 |
-| 持仓重建 | 受控减仓、均价保护、双向激活 |
-| 收益分析 | 收益日历、统一账本、年化收益率 |
-| 多通道通知 | 飞书 / 钉钉 / Telegram |
-| AI 助手 | 连续对话、行情依据、方案对比与人工操作状态核验 |
-
----
-
-## 文档
-
-- [安装与部署](docs/installation.md)
-- [各应用安装与使用指南](docs/usage.md)
-- [激活与设备迁移](docs/activation.md)
+- [安装与升级](docs/installation.md)
+- [日常使用](docs/usage.md)
+- [暂停与保证金核查](docs/operations.md)
+- [激活、续费与设备迁移](docs/activation.md)
 - [发布产物说明](releases/README.md)
-
----
-
+- [官网](https://www.1990663.xyz/) · [支持邮箱](mailto:support@1990663.xyz)

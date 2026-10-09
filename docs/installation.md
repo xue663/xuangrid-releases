@@ -1,96 +1,86 @@
-# 安装与部署
+# 安装与升级
 
-## 环境要求
+当前稳定版 **1.4.5**。Windows 使用 x64 安装包；Linux、飞牛及其他 NAS 使用 Docker，镜像支持 **Linux amd64 / x86_64**。ARM 设备没有原生镜像。
 
-- 可访问币安 API 的服务器，建议 2 核 4GB 起步
-- 币安 API Key 仅开启交易与只读权限，关闭提现权限，并配置服务器 IP 白名单
+## Docker / 飞牛 / Linux
 
-## Docker 部署
+准备 Docker 和三个持久化目录，执行：
 
 ```bash
-mkdir -p xuangrid/{config,data,logs}
-cd xuangrid
-docker pull jun663/xuangrid:latest
-docker run -d --name xuangrid -p 8787:8787 \
-  -v ./config:/app/config \
-  -v ./data:/app/data \
-  -v ./logs:/app/logs \
+mkdir -p ~/xuangrid/config ~/xuangrid/data ~/xuangrid/logs
+docker pull jun663/xuangrid:1.4.5
+docker run -d --name xuangrid --restart unless-stopped \
+  -p 8787:8787 \
   -e TZ=Asia/Shanghai \
-  jun663/xuangrid:latest
+  -v ~/xuangrid/config:/app/config \
+  -v ~/xuangrid/data:/app/data \
+  -v ~/xuangrid/logs:/app/logs \
+  jun663/xuangrid:1.4.5
 ```
 
-首次启动后浏览器打开 `http://<服务器IP>:8787` 完成管理员初始化，并配置币安 API。
+浏览器打开 `http://<服务器或NAS的局域网IP>:8787`。命令发布到宿主机网卡，请通过可信局域网、VPN 或受保护的 HTTPS 入口访问，勿直接开放到公网。
 
-### 公开只读演示（仅测试网）
+飞牛等 NAS 使用容器管理界面时，填写相同的镜像、端口和三个目录映射。宿主目录可自行选择，升级必须继续挂载原目录；不要把容器内 `/app/data` 当成宿主目录。新建实例时检查宿主端口 8787 是否已被占用。
 
-官网演示容器可在确认 `config.yaml` 使用 `environment: testnet` 后增加：
+首次启动自动生成 `config/config.yaml` 和 API 令牌；网页管理员账号由你创建，API 令牌不是管理员密码或订阅激活码。启动脚本会修正持久化目录权限，再以 UID 10001 运行。受 NAS 权限限制时，为该 UID 授予读写权限，不要清空目录来排障。
 
 ```bash
--e XUANGRID_PUBLIC_DEMO=true
--p 8788:8788
+docker ps --filter name=xuangrid
+docker logs --tail 100 xuangrid
 ```
 
-演示入口默认使用 `8788` 端口，也可以通过 `XUANGRID_PUBLIC_DEMO_PORT` 或 `api.public_demo_port` 修改。`8787` 仍保留正常登录控制台，两者互不影响。访客在 `8788` 会自动以观察员身份进入，只能读取行情、网格、订单、收益和风险数据。暂停、恢复、参数、用户、交易所凭证、激活与通知配置等写操作均由后端拒绝。主网实例启用该选项会直接拒绝启动。
+## Windows x64
 
-## Linux 部署（Docker）
+1. 从 [1.4.5 Release](https://github.com/xue663/xuangrid-releases/releases/tag/v1.4.5) 下载 ZIP 和同名 `.sha256` 文件。
+2. 在下载目录打开 PowerShell，核对以下哈希与校验文件第一段相同：
 
-Linux 用户统一使用 Docker 镜像部署，公开仓库不提供 Linux 源码运行包：
+```powershell
+Get-FileHash .\xuangrid-1.4.5-win-x64.zip -Algorithm SHA256
+Get-Content .\xuangrid-1.4.5-win-x64.zip.sha256
+```
+
+3. 解压到独立目录，进入包含 `run.bat` 的最内层目录，双击它；不要直接运行 EXE。
+4. 保持控制台窗口开启，访问 `http://127.0.0.1:8787`。页面暂不可用时，等程序启动后刷新。
+
+启动失败查看 `logs\startup.log`。需要服务托管时，按安装包说明准备 NSSM，再以管理员身份运行 `install_service.bat`。
+
+## 第一次打开：按六步引导完成
+
+1. **创建管理员**：保存账号和密码；一次性初始化码用于创建管理员，页面通常会自动填入。
+2. **激活或试用**：输入订阅激活码，或按页面提示申请设备试用。
+3. **连接账户**：首次建议测试网，填写对应环境的币安合约 API；仅开启读取和合约交易权限，关闭提现权限并配置出口 IP 白名单。
+4. **配置策略**：选择交易对、网格方向和参数。
+5. **资金与风险预演**：阅读检查结果，处理页面列出的阻塞。
+6. **确认启动**：输入交易对并确认。仅完成安装或激活不会自动开始交易。
+
+测试网与主网 API 不通用。首次主网连接会验证凭据并读取合约钱包余额；余额为零无法完成设置。首次启动要求账户空仓、无挂单，请使用符合要求的账户，不要为了通过检查擅自删除已有保护单。
+
+## Docker 升级到 1.4.5
+
+1. 在 Web 暂停策略，确认命令完成、没有待处理的参数应用，核对仓位和真实平仓保护单。
+2. **停止容器后再备份**，使数据库与相关文件保持一致：
 
 ```bash
-mkdir -p xuangrid/{config,data,logs}
-cd xuangrid
-docker pull jun663/xuangrid:latest
-docker run -d --name xuangrid -p 8787:8787 \
-  -v ./config:/app/config \
-  -v ./data:/app/data \
-  -v ./logs:/app/logs \
-  -e TZ=Asia/Shanghai \
-  jun663/xuangrid:latest
+docker stop -t 60 xuangrid
+umask 077
+tar -C "$HOME/xuangrid" -czf "$HOME/xuangrid-backup-$(date +%Y%m%d-%H%M%S).tar.gz" config data logs
+docker pull jun663/xuangrid:1.4.5
+docker rm xuangrid
 ```
 
-需要 systemd 托管时，参考私有仓库 `deploy/` 目录中的服务模板。
+3. 使用安装段落的 `docker run` 命令重建，保持原目录、端口和自定义环境变量。路径与示例不同的实例，备份和重建都使用自己的实际路径。
+4. 核对 Web 版本、授权、仓位、订单和保护状态。**已暂停的策略仍保持暂停**；确认风控中心没有阻塞后再手动恢复。
 
-## Windows 部署
+固定版本便于确认安装版本；`latest` 会随后续正式发布变化。使用 Compose 的实例见 [Docker Hub 说明](../DOCKERHUB.md)。不要删除持久化目录或使用 `docker compose down -v` 清除数据。
 
-1. 解压 `xuangrid-<version>-win-x64.zip`
-2. 双击 `run.bat`（不要直接双击 exe），首次会自动生成 `config.yaml` 和 API Token
-   - Web 初始化页面会自动显示并填入「一次性初始化码」
-3. 浏览器打开 `http://127.0.0.1:8787` 完成初始化
+## Windows 升级
 
-启动失败时窗口会暂停并显示错误码，详细日志在 `logs\startup.log`。
+先在 Web 暂停并核对保护单，再停止程序或服务；备份 `config.yaml`、完整 `data/` 和 `logs/`，如使用自定义 `.env` 也须保留。解压新包到新目录，回填原配置与完整数据后启动。服务托管的实例还需更新服务的程序路径和工作目录。
 
-首次配置 Binance 凭证时，可在 Web 页面选择「测试网 testnet」或「主网 mainnet」；主网会显示真实资金风险确认提示。
+保留数据也会保留授权设备身份，常规升级无需解绑、重新创建管理员或重新启动首次引导。启动后核对版本、授权及保护单，手动恢复前处理风控阻塞。
 
-首次设置可一次提交运行环境与对应的 Binance API 凭证。选择主网后，系统先验证主网凭证，再读取合约钱包余额作为初始本金；余额为零时无法完成设置。请确认 API Key 未开启提现权限，并确保目标账户满足空仓、无挂单的首次启动要求。
+## 出现问题
 
-开机自启：下载 [NSSM](https://nssm.cc) 放入 PATH，以管理员身份运行 `install_service.bat`。
-
-## 升级
-
-- Docker：拉取新镜像后重建容器，保留 `config/` 与 `data/` 目录
-- Windows：停止服务或关闭窗口，解压新版本，复制旧版本的 `config.yaml` 与 `data/` 目录后重新启动
-
-## 常见问题
-
-### 网页打不开
-
-确认防火墙放行 8787 端口；Docker 部署检查 `docker logs xuangrid`。
-
-### 容器启动报 Permission denied / 无法创建 config.yaml
-
-Docker 镜像以 UID 10001 的非 root 用户运行。使用 `-v ./config:/app/config` 这类目录挂载时，如果宿主目录由 root 创建，容器内用户可能没有写入权限。可执行：
-
-```bash
-sudo chown -R 10001:10001 xuangrid/config xuangrid/data xuangrid/logs
-docker restart xuangrid
-```
-
-新版镜像的启动脚本会自动修正 `/app/config`、`/app/data`、`/app/logs` 的归属，再切换到非 root 用户运行程序。
-
-### 许可证提示未激活或已过期
-
-在官网购买后输入激活码；换设备请先在客户门户解绑旧设备。
-
-### 如何确认安装包未被篡改
-
-每个 Release 附件都附带 `.sha256` 校验文件，下载后核对哈希。
+- **网页打不开**：检查程序或容器状态、日志、宿主端口冲突和局域网防火墙；Docker 使用服务器 IP，Windows 本机使用 127.0.0.1。
+- **保证金核查一直等待、恢复失败**：按 [暂停与保证金核查指南](operations.md) 处理，不要反复恢复或重复划转。
+- **升级后授权异常**：先检查是否挂载原 `data/`，再参考 [激活与迁移](activation.md)，不要先删除授权数据。
