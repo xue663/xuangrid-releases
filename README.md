@@ -4,7 +4,7 @@
 
 面向 Binance U 本位永续合约的网格交易工具，支持中性、做多、做空网格，ATR 自适应间距、分层风控、收益分析与多通道通知。Windows 或 Docker 自行部署，先在测试网验证，再决定是否使用实盘。
 
-本仓库提供安装包与客户文档。当前稳定版 **1.4.5**。
+本仓库提供安装包与客户文档。当前稳定版 **1.5.0**。
 
 ## 资金由你掌控，API 权限由你授权
 
@@ -18,8 +18,8 @@
 
 ## 选择安装方式
 
-- **Windows x64**：[下载 1.4.5 ZIP 和校验文件](https://github.com/xue663/xuangrid-releases/releases/tag/v1.4.5)，解压后双击最内层目录的 `run.bat`，访问 `http://127.0.0.1:8787`。
-- **Linux / 飞牛 / NAS**：使用 [Docker Hub](https://hub.docker.com/r/jun663/xuangrid) 的 `jun663/xuangrid:1.4.5`，支持 Linux amd64 / x86_64。
+- **Windows x64**：[下载 1.5.0 ZIP 和校验文件](https://github.com/xue663/xuangrid-releases/releases/tag/v1.5.0)，解压后双击最内层目录的 `run.bat`，访问 `http://127.0.0.1:8787`。
+- **Linux / 飞牛 / NAS**：使用 [Docker Hub](https://hub.docker.com/r/jun663/xuangrid) 的 `jun663/xuangrid:1.5.0`，支持 Linux amd64 / x86_64。
 - **先看界面**：[打开只读测试网演示](https://demo.1990663.xyz/)。演示不提供控制操作，展示数据不代表未来收益。
 
 [完整安装命令、下载校验及升级步骤 →](docs/installation.md)
@@ -30,13 +30,13 @@
 
 一次性初始化码用于创建管理员，激活码用于订阅授权，管理员密码用于登录和确认操作。完成安装或激活不会自动开始交易。
 
-## 1.4.5 改善了什么
+## 1.5.0 改善了什么
 
 - 保证金结果暂时不明确时在后台核查，符合条件的临时保护可以自动恢复，保留用户手动暂停。
 - 疑难旧记录由系统检查当前账户，管理员按提示确认，审计依据自动保存。
 - 运行通知使用简短中文，说明影响和下一步，减少无操作价值的观察消息。
 
-[暂停、保证金核查及运行提醒 →](docs/operations.md) · [完整更新说明 →](releases/release-notes-1.4.5.md)
+[暂停、保证金核查及运行提醒 →](docs/operations.md) · [完整更新说明 →](releases/release-notes-1.5.0.md)
 
 ## 功能与操作边界
 

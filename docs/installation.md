@@ -1,6 +1,6 @@
 # 安装与升级
 
-当前稳定版 **1.4.5**。Windows 使用 x64 安装包；Linux、飞牛及其他 NAS 使用 Docker，镜像支持 **Linux amd64 / x86_64**。ARM 设备没有原生镜像。
+当前稳定版 **1.5.0**。Windows 使用 x64 安装包；Linux、飞牛及其他 NAS 使用 Docker，镜像支持 **Linux amd64 / x86_64**。ARM 设备没有原生镜像。
 
 ## Docker / 飞牛 / Linux
 
@@ -8,14 +8,14 @@
 
 ```bash
 mkdir -p ~/xuangrid/config ~/xuangrid/data ~/xuangrid/logs
-docker pull jun663/xuangrid:1.4.5
+docker pull jun663/xuangrid:1.5.0
 docker run -d --name xuangrid --restart unless-stopped \
   -p 8787:8787 \
   -e TZ=Asia/Shanghai \
   -v ~/xuangrid/config:/app/config \
   -v ~/xuangrid/data:/app/data \
   -v ~/xuangrid/logs:/app/logs \
-  jun663/xuangrid:1.4.5
+  jun663/xuangrid:1.5.0
 ```
 
 浏览器打开 `http://<服务器或NAS的局域网IP>:8787`。命令发布到宿主机网卡，请通过可信局域网、VPN 或受保护的 HTTPS 入口访问，勿直接开放到公网。
@@ -31,12 +31,12 @@ docker logs --tail 100 xuangrid
 
 ## Windows x64
 
-1. 从 [1.4.5 Release](https://github.com/xue663/xuangrid-releases/releases/tag/v1.4.5) 下载 ZIP 和同名 `.sha256` 文件。
+1. 从 [1.5.0 Release](https://github.com/xue663/xuangrid-releases/releases/tag/v1.5.0) 下载 ZIP 和同名 `.sha256` 文件。
 2. 在下载目录打开 PowerShell，核对以下哈希与校验文件第一段相同：
 
 ```powershell
-Get-FileHash .\xuangrid-1.4.5-win-x64.zip -Algorithm SHA256
-Get-Content .\xuangrid-1.4.5-win-x64.zip.sha256
+Get-FileHash .\xuangrid-1.5.0-win-x64.zip -Algorithm SHA256
+Get-Content .\xuangrid-1.5.0-win-x64.zip.sha256
 ```
 
 3. 解压到独立目录，进入包含 `run.bat` 的最内层目录，双击它；不要直接运行 EXE。
@@ -55,7 +55,7 @@ Get-Content .\xuangrid-1.4.5-win-x64.zip.sha256
 
 测试网与主网 API 不通用。首次主网连接会验证凭据并读取合约钱包余额；余额为零无法完成设置。首次启动要求账户空仓、无挂单，请使用符合要求的账户，不要为了通过检查擅自删除已有保护单。
 
-## Docker 升级到 1.4.5
+## Docker 升级到 1.5.0
 
 1. 在 Web 暂停策略，确认命令完成、没有待处理的参数应用，核对仓位和真实平仓保护单。
 2. **停止容器后再备份**，使数据库与相关文件保持一致：
@@ -64,7 +64,7 @@ Get-Content .\xuangrid-1.4.5-win-x64.zip.sha256
 docker stop -t 60 xuangrid
 umask 077
 tar -C "$HOME/xuangrid" -czf "$HOME/xuangrid-backup-$(date +%Y%m%d-%H%M%S).tar.gz" config data logs
-docker pull jun663/xuangrid:1.4.5
+docker pull jun663/xuangrid:1.5.0
 docker rm xuangrid
 ```
 
