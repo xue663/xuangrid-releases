@@ -1,10 +1,10 @@
 {
-  "tag": "v1.6.0",
+  "tag": "v1.6.1",
   "assets": {
-    "windows": "xuangrid-1.6.0-win-x64.zip",
-    "sha256": "xuangrid-1.6.0-win-x64.zip.sha256"
+    "windows": "xuangrid-1.6.1-win-x64.zip",
+    "sha256": "xuangrid-1.6.1-win-x64.zip.sha256"
   },
-  "docker": "jun663/xuangrid:1.6.0",
-  "version": "1.6.0",
-  "published_at": "2026-11-09T06:53:05Z"
+  "published_at": "2026-11-09T16:36:10Z",
+  "docker": "jun663/xuangrid:1.6.1",
+  "version": "1.6.1"
 }

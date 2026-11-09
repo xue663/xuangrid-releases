@@ -35,8 +35,8 @@ docker logs --tail 100 xuangrid
 2. 在下载目录打开 PowerShell，核对以下哈希与校验文件第一段相同：
 
 ```powershell
-Get-FileHash .\xuangrid-1.6.0-win-x64.zip -Algorithm SHA256
-Get-Content .\xuangrid-1.6.0-win-x64.zip.sha256
+Get-FileHash .\xuangrid-1.6.1-win-x64.zip -Algorithm SHA256
+Get-Content .\xuangrid-1.6.1-win-x64.zip.sha256
 ```
 
 3. 解压到独立目录，进入包含 `run.bat` 的最内层目录，双击它；不要直接运行 EXE。
