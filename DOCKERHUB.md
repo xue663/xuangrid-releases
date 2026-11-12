@@ -2,7 +2,7 @@
 
 面向 Binance U 本位永续合约的网格交易工具：ATR 自适应间距、中性 / 做多 / 做空网格、策略预演、分层风控、收益分析和飞书 / 钉钉 / Telegram 通知。
 
-当前稳定版 **1.6.3**，镜像平台 **Linux amd64 / x86_64**，适合 Linux 服务器、飞牛及兼容的 NAS。ARM 设备没有原生镜像。首次请使用测试网验证，交易不承诺收益。
+当前稳定版 **1.7.0**，镜像平台 **Linux amd64 / x86_64**，适合 Linux 服务器、飞牛及兼容的 NAS。ARM 设备没有原生镜像。首次请使用测试网验证，交易不承诺收益。
 
 ## 资金由你掌控，API 权限由你授权
 
@@ -18,14 +18,14 @@
 
 ```bash
 mkdir -p ~/xuangrid/config ~/xuangrid/data ~/xuangrid/logs
-docker pull jun663/xuangrid:1.6.3
+docker pull jun663/xuangrid:1.7.0
 docker run -d --name xuangrid --restart unless-stopped \
   -p 8787:8787 \
   -e TZ=Asia/Shanghai \
   -v ~/xuangrid/config:/app/config \
   -v ~/xuangrid/data:/app/data \
   -v ~/xuangrid/logs:/app/logs \
-  jun663/xuangrid:1.6.3
+  jun663/xuangrid:1.7.0
 ```
 
 访问 `http://<服务器或NAS的局域网IP>:8787`，通过可信局域网、VPN 或受保护的 HTTPS 入口使用，勿直接开放到公网。
@@ -41,7 +41,7 @@ NAS 容器界面填写相同镜像、端口和三个目录映射。首次自动�
 ```yaml
 services:
   xuangrid:
-    image: jun663/xuangrid:1.6.3
+    image: jun663/xuangrid:1.7.0
     container_name: xuangrid
     restart: unless-stopped
     ports:
@@ -71,11 +71,11 @@ docker compose up -d
 
 启动后核对版本、授权、仓位、订单和保护状态。常规升级无需解绑设备；**已暂停策略保持暂停**，处理风控阻塞后再手动恢复。不要使用 `docker compose down -v` 清除数据。
 
-## 1.6.3：方向策略重启保护修复
+## 1.7.0：方向策略重启保护修复
 
 修复做多或做空方向策略手动平仓后重新启动时，可能持续停留在防冲击状态的问题。启动阶段会继续推进小时线核验，冲击未解除前仍限制逆势新增开仓；解除后按原有流程建立初始网格。现有参数、数据和保护单保持不变。
 
-[完整更新说明](https://github.com/xue663/xuangrid-releases/releases/tag/v1.6.3)
+[完整更新说明](https://github.com/xue663/xuangrid-releases/releases/tag/v1.7.0)
 
 ## 检查与帮助
 
